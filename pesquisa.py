@@ -14,14 +14,7 @@ class Pesquisa:
         self.carregarIndice("index.pkl")
         self.stemmer = PorterStemmer()        
         self.stop_words = set(stopwords.words('portuguese'))
-
-        #**
-        # 
-        #   'indice_invertido': dict(self.indice_invertido),
-        #    'tfidf': m,
-        #    'documentos': self.documentos,
-        #    'tamanhos_docs': self.tamanhos_docs
-        # *#
+ 
     
     def carregarIndice(self, index_file):
         try:
@@ -69,6 +62,6 @@ class Pesquisa:
                 scores[documento] = score
         #ordena o resultado do maior para o menor, levando a página em consideração (:t )
         results = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:t]
-
-        return [(documento, score, self.documentos[documento][:200] + "...")
+        #chave,pontuacao,preview
+        return [(documento, score, self.documentos[documento][:20] + "...")
                 for documento, score in results]
