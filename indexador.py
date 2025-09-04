@@ -16,6 +16,8 @@ class Indexador:
         self.tamanhos_docs = {}
         self.stemmer = PorterStemmer()
         self.stop_words = set()
+        nltk.data.path.append("nltk_data") #hack para funcionar 100% offline, pois o stremilit na nuvem não consegue baixar os dados remotamente
+
 
 
     def preprocessar(self, texto):
@@ -28,11 +30,8 @@ class Indexador:
     
     def indexar(self, pasta):
         inicio = time.time()
-        print("Iniciando o setup do nltk")
-        nltk.download('punkt')      
-        nltk.download('stopwords')
         self.stop_words = set(stopwords.words('portuguese'))
-        print("Setup do nltk concluído")
+        
 
         for filename in os.listdir(pasta):
             if filename.endswith('.txt'):

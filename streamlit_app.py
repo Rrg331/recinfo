@@ -5,6 +5,8 @@ from pesquisa import Pesquisa
 from sidebar import render_sidebar
 
 st.title("Sistema de Recuperação de Informação - UFRJ 2025/2")
+st.footer("PPGI - 2025 rrg@ufrj.br - ver: 1.0")
+
 
 indexado = render_sidebar() #desenha a sidebar, e retorna se o indice existe ou não
 
@@ -76,3 +78,4 @@ elif indexado:
 
 elif not (hasattr(st.session_state, 'indice_visivel') and st.session_state.indice_visivel): #se não tiver indice, não exibe a tela de pesquisa
     st.error("Índice não encontrado. Clique em 'Reindexar Documentos' para criar o índice.")
+
