@@ -3,11 +3,13 @@ import re
 import pickle
 import math
 import time
+import zipfile
 from collections import defaultdict, Counter
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
+
 
 class Indexador:
     def __init__(self):
@@ -89,6 +91,12 @@ class Indexador:
             pickle.dump(index_data, f)
         print(f"Índice salvo em index.pkl")
 
+        #gera um zip com toda base de documentos (para download)
+        print("gerando zip")
+        with zipfile.ZipFile("docs/export.zip", "w") as zipf:
+            for doc_id, texto in self.documentos.items():
+                zipf.writestr(f"{doc_id}.txt", texto)
+        print("zip salvo em docs/export.zip")
 
     def gerarIndice(self) :
         ini = time.time()

@@ -29,11 +29,9 @@ def render_sidebar():
             st.session_state.indice_visivel = True
         else:
             st.sidebar.warning("Índice não encontrado.")
-    
-   
 
-        
-    
-
+    #botão para download do docs/export.zip
+    if indexado:
+        st.sidebar.download_button("Download base", "docs/export.zip", file_name="documentos.zip")
 
     return indexado
