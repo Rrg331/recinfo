@@ -95,7 +95,7 @@ class Indexador:
         print("gerando zip")
         with zipfile.ZipFile("docs/export.zip", "w") as zipf:
             for doc_id, texto in self.documentos.items():
-                zipf.writestr(f"{doc_id}.txt", texto)
+                zipf.write("docs/" + doc_id, arcname=doc_id)
         print("zip salvo em docs/export.zip")
 
     def gerarIndice(self) :
