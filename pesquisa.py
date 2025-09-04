@@ -9,10 +9,11 @@ from nltk.corpus import stopwords
 
 class Pesquisa:
     def __init__(self):
+
+        nltk.data.path.append("nltk_data") #hack para funcionar 100% offline, pois o streamlit na nuvem não consegue baixar os dados remotamente
         self.carregarIndice("index.pkl")
         self.stemmer = PorterStemmer()        
         self.stop_words = set(stopwords.words('portuguese'))
-        nltk.data.path.append("nltk_data") #hack para funcionar 100% offline, pois o streamlit na nuvem não consegue baixar os dados remotamente
 
         #**
         # 

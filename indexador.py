@@ -11,14 +11,12 @@ from nltk.stem import PorterStemmer
 
 class Indexador:
     def __init__(self):
+        nltk.data.path.append("nltk_data") #hack para funcionar 100% offline, pois o streamlit na nuvem não consegue baixar os dados remotamente
         self.indice_invertido = defaultdict(dict)
         self.documentos = {}
         self.tamanhos_docs = {}
         self.stemmer = PorterStemmer()
         self.stop_words = set()
-        nltk.data.path.append("nltk_data") #hack para funcionar 100% offline, pois o stremilit na nuvem não consegue baixar os dados remotamente
-
-
 
     def preprocessar(self, texto):
         texto = texto.lower()
